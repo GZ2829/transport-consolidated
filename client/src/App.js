@@ -10,6 +10,7 @@ import Loadboard from './Components/Loadboard'
 import Logout from './Components/Logout';
 import Notauth from './Components/Notauth'
 import Profile from './Components/Profile';
+import Footer from './Components/Footer'
 
 
 const App =() => {
@@ -26,6 +27,7 @@ const App =() => {
           <Route path='/error' component={Notauth}/>
           <Route path='/profile' component={Profile}/>
       </Switch>
+      
       </div>
     );
 }

@@ -562,4 +562,12 @@
   color: white
 }
 
+ /* This is for the Footer */
 
+ .footer{
+  height: 50px;
+  display: flex;
+  width: 100%;
+  color: grey;
+  background-color: gray;
+ }

@@ -19,6 +19,6 @@ app.use('/trailers', trailerRoutes)
 app.use('/bids', bidRoutes)
 app.use('/loads', loadRoutes )
 
-app.listen(3724, ()=>{
-    console.log('Up and Running on port: 3724')
+app.listen(3728, ()=>{
+    console.log('Up and Running on port: 3728')
 })
