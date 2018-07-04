@@ -19,7 +19,6 @@ const Clientpage = (props) =>{
           <Route path={`${match.url}/editaload`} component={Editaload}/>
           <Route path={`${match.url}/clientloadboard`} component={Clientloadboard}/>
       </Switch>
-      <Footer />
       </div>
     );
   } else{
