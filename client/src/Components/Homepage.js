@@ -37,12 +37,13 @@ class Homepage extends Component {
       <div className='homepage3'><h1>We have you covered....</h1></div>
       <div className='homepage4'>
       <div><h3>"From finding a truck for your goods to the recievers dock; we'll get it there..."</h3></div>
-      <form onSubmit={this.userLogin} className="loginform">
-        <h4>Log In</h4>
-        <input name='email' value={this.state.email} onChange={this.handleInputChange}type='text' placeholder='Email'/>
-        <input name='password' value={this.state.password} onChange={this.handleInputChange}type='text' placeholder='Password'/>
-        <button>Submit</button>
-        </form></div> 
+        <form onSubmit={this.userLogin} className="loginform">
+          <h4>Log In</h4>
+          <input name='email' value={this.state.email} onChange={this.handleInputChange}type='text' placeholder='Email'/>
+          <input name='password' value={this.state.password} onChange={this.handleInputChange}type='text' placeholder='Password'/>
+          <button>Submit</button>
+        </form>
+      </div> 
     </div>
     );
   }
