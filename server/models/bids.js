@@ -14,14 +14,15 @@ const bidSchema = new Schema({
         type: Number,
         required: true,
     },
-    bidderTrucks:{
-        type: mongoose.Schema.Types,
-        ref: 'Truck'
-    },
-    bidderTrailers:{
-        type: mongoose.Schema.Types,
+    bidderTrucks:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Truck',
+     
+    }],
+    bidderTrailers:[{
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Trailer'
-    }
+    }]
 })
 
 module.exports = mongoose.model('Bid', bidSchema)

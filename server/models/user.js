@@ -22,24 +22,24 @@ const userSchema = new Schema ({
     aboutYourself: {
         type: String
     },
-    loads: {
-         type: mongoose.Schema.Types,
+    loads: [{
+         type: mongoose.Schema.Types.ObjectId,
          ref: 'Load'
-    },
-    trucks: {
-        type: mongoose.Schema.Types,
+    }],
+    trucks: [{
+        type: mongoose.Schema.Types.ObjectId,
          ref: 'Truck'
-    },
+    }],
     dotNumber:{
         type: String
     },
     mcNumber: {
         type: String
     },
-    trailers: {
-        type: mongoose.Schema.Types,
+    trailers: [{
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Trailer'
-    }
+    }]
 })
 
 

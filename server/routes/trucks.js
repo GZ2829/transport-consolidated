@@ -20,6 +20,7 @@ truckRouter.get('/:id', (req,res)=>{
 
 truckRouter.post('/', (req,res)=>{
     const rucks = Trucks(req.body);
+    console.log(req.body)
     rucks.save((err, newTruck)=>{
         if (err) return res.status(500).send(err);
         return res.status(201).send(newTruck)

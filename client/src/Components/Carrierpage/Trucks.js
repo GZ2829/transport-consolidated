@@ -13,7 +13,7 @@ class Trucks extends Component {
                 model: '',
                 year: Number,
                 amountOfTrucks: Number,
-                class: '',
+                class: 'Class 1-3 (0-14,000lbs)',
                 isToggled: false
 
             }
@@ -40,7 +40,8 @@ class Trucks extends Component {
                 model: this.state.model,
                 year: this.state.year,
                 amountOfTrucks: this.state.amountOfTrucks,
-                class: this.state.class
+                class: this.state.class,
+                clientId: this.props.user.userInfo._id
             })
         }
         toggle(){
@@ -54,7 +55,9 @@ class Trucks extends Component {
 
    render() {
       const {trucks} = this.props
-      const Vehicles=trucks.map(truck=>{
+      const Vehicles=trucks.filter(truck=>{
+          return truck.clientId === this.props.user.userInfo._id
+      }).map(truck=>{
           return(
             <Trucklist key={truck._id} id={truck._id} make={truck.make} model={truck.model} year={truck.year} amountOfTrucks={truck.amountOfTrucks} class={truck.class}/>
           )

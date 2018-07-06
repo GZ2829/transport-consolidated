@@ -49,6 +49,7 @@ export const removeTruck = id => {
     }
 }
 export const addTruck = addedTruck => {
+    console.log(addedTruck)
     return dispatch => {
         axios.post("/trucks", addedTruck).then(() => {
             dispatch(getTruckData());
