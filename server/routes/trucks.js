@@ -10,6 +10,7 @@ truckRouter.get('/', (req,res)=>{
         return res.status(200).send(users)
     })
 })
+
 truckRouter.get('/:id', (req,res)=>{
     Trucks.findById(req.params.id, (err, load)=>{
         if(err) return res.status(500).send(err)

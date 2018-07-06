@@ -13,6 +13,7 @@ export const getLoadData = () =>{
         })
     }
 }
+
 export const addLoad = addedLoad => {
     return dispatch => {
         axios.post("/loads", addedLoad).then(() => {

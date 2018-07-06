@@ -11,6 +11,13 @@ bidRouter.get('/', (req,res)=>{
     })
 })
 
+bidRouter.get('/:id', (req,res)=>{
+    Bids.findById(req.params.id, (err,bid) =>{
+        if (err) return res.status(500).send(err)
+        return res.status(200).send(bid)
+    })
+})
+
 bidRouter.post('/', (req,res)=>{
     const rucks = Bids(req.body);
     rucks.save((err, newTruck)=>{
@@ -18,6 +25,12 @@ bidRouter.post('/', (req,res)=>{
         return res.status(201).send(newTruck)
     })
 })
+bidRouter.put('/:id', (req,res)=>{
+    Bids.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updated)=>{
+        if (err) return res.status(500).send(err);
+        return res.status(201).send(updated)
+    })
+    })
 
 bidRouter.delete('/:id', (req, res) =>{
     Bids.findByIdAndRemove(req.params.id, (err,deleted)=>{
