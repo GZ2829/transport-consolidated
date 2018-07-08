@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { editLoad, getLoadData, removeLoad } from '../redux/loads'
+import { addBid } from '../redux/bids'
 import '../App.css';
 
 class Loadboarddiv extends Component {
@@ -8,6 +9,7 @@ class Loadboarddiv extends Component {
        super()
 
     this.state = {
+        isToggled1: false,
         isToggled: false,
         inputs:{
             originCity: '',
@@ -19,23 +21,34 @@ class Loadboarddiv extends Component {
             needAssistanceLoading: Boolean,
             isGPSRequired: Boolean,
             isRushed: Boolean,
+        },
+        bids:{
+            bidAmountInUSD: Number
         }
 
     }
        this.handleInputChange=this.handleInputChange.bind(this)
+       this.handleInputChange1=this.handleInputChange1.bind(this)
        this.toggle = this.toggle.bind(this)
        this.deleteLoad = this.deleteLoad.bind(this)
        this.editALoad=this.editALoad.bind(this)
+       this.toggle1 = this.toggle1.bind(this)
   }
 
   componentDidMount(){
     this.props.getLoadData()
-
   }
   toggle(){
     this.setState(prevState => {
         return {
             isToggled: !prevState.isToggled
+        }
+    })
+}
+toggle1(){
+    this.setState(prevState => {
+        return {
+            isToggled1: !prevState.isToggled1
         }
     })
 }
@@ -45,8 +58,13 @@ handleInputChange = event => {
         inputs: {
             ...prevState.inputs,
             [name]: value
-        }
+        },
     }))
+}
+handleInputChange1 = event => {
+    this.setState({bids: {
+        bidAmountInUSD: event.target.value
+    }})
 }
 deleteLoad(){
     this.props.removeLoad(this.props.id)
@@ -55,6 +73,20 @@ deleteLoad(){
 editALoad(e){
     e.preventDefault()
    this.props.editLoad(this.props.id, this.state.inputs)
+}
+addBid=(e)=>{
+    e.preventDefault()
+    this.props.addBid({
+        bidAmountInUSD: this.state.bids.bidAmountInUSD,
+        truckerId: this.props.user.userInfo._id,
+        loadId: this.props.id
+    })
+    this.setState({
+        isToggled1: false,
+        bids : {
+            bidAmountInUSD: Number
+        }
+    }) 
 }
 
 
@@ -68,6 +100,12 @@ editALoad(e){
         <h5>In A Rush? {this.props.isRushed}</h5>
         {user.accountType === 'Client' || user.accountType==='Admin' ? <button onClick={this.toggle}>Edit</button> : null}
         {user.accountType === 'Client' ||  user.accountType==='Admin' ? <button onClick={()=>this.deleteLoad(this.props.id)}>Delete</button> : null}
+        {user.accountType ==='Carrier' || user.accountType==='Admin' ? <button onClick={this.toggle1}>Bid</button> : null}
+        {this.state.isToggled1 ?
+           <form onSubmit={this.addBid}>
+               <input value='number' onChange={this.handleInputChange1} placeholder='Bid Amount In USD' value={this.state.bids.bidAmountInUSD} />
+               <button>Submit</button>
+           </form> : null}
         {this.state.isToggled
           ? <form className='loadboardDiv' onSubmit={this.editALoad}>
           <input name='originCity' type='text' onChange={this.handleInputChange} value={this.state.inputs.originCity} placeholder="Origin City"/>
@@ -208,4 +246,4 @@ editALoad(e){
   }
 }
 
-export default connect(state=>({user: state.user}), { editLoad, removeLoad, getLoadData })(Loadboarddiv)
+export default connect(state=>({user: state.user}), { editLoad, removeLoad, getLoadData, addBid })(Loadboarddiv)

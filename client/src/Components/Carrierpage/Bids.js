@@ -3,6 +3,14 @@ import '../../App.css';
 
 
 class Bids extends Component {
+  constructor(){
+    super()
+
+    this.state={
+      
+    }
+  }
+
   render() {
     return (
     <div className='yourBids'>

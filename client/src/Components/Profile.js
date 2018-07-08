@@ -14,7 +14,6 @@ class Profile extends Component {
     }
     
   render() {
-      console.log(this.props.user)
       return(
        <div className='profile'>
         <h1>Welcome {this.props.user.userInfo.email}</h1>
