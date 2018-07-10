@@ -33,7 +33,8 @@ class Trailer extends Component {
         year: this.state.year,
         carryingCapacityInLbs: this.state.carryingCapacityInLbs,
         palletCapacity: this.state.palletCapacity,
-        amountOfTrailers: this.state.amountOfTrailers
+        amountOfTrailers: this.state.amountOfTrailers,
+        clientId: this.props.user.userInfo._id
     })
   }
   handleInputChange = event => {
@@ -45,7 +46,9 @@ class Trailer extends Component {
 
 
   render() {
-    const trailers=this.props.trailers.map(trailer=>{
+    const trailers=this.props.trailers.filter(trailer=>{
+      return trailer.clientId === this.props.user.userInfo._id
+  }).map(trailer=>{
       return(
         <Trailerlist key={trailer._id} id={trailer._id} typeOfTrailer={trailer.typeOfTrailer} model={trailer.model} year={trailer.year} carryingCapacityInLbs={trailer.carryingCapacityInLbs} palletCapacity=
         {trailer.palletCapacity} amountOfTrailers={trailer.amountOfTrailers} />
@@ -73,4 +76,4 @@ class Trailer extends Component {
   }
 }
 
-export default connect(state=>({ trailers: state.trailers }), { getTrailerData, addTrailer })(Trailer)
+export default connect(state=>({ trailers: state.trailers, user: state.user }), { getTrailerData, addTrailer })(Trailer)
