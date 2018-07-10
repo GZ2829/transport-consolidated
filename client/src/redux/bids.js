@@ -5,7 +5,7 @@ export const getBidData = () =>{
         axios.get('/bids').then(response => {
             dispatch({
                 type: 'GET_BID_DATA',
-                loads: response.data
+                bids: response.data
             })
         }).catch(err => {
             console.log(err)
@@ -57,7 +57,7 @@ export const editBid = (id, editedBid) => {
 const bidReducer = (state = [], action) => {
     switch(action.type){
         case "GET_BID_DATA":
-            return action.loads
+            return action.bids
         default:
             return state
     }

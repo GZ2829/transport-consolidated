@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import '../../App.css';
 import {connect} from 'react-redux'
-import getBidData from '../../redux/bids'
+import { getBidData } from '../../redux/bids'
+import Bidlist from './Bidlist'
 
 
 class Bids extends Component {
@@ -13,21 +14,24 @@ class Bids extends Component {
     }
   }
 
-    componentDidMount(){
-      this.props.getBidData
+    componentDidMount = ()=>{
+      this.props.getBidData()
     }
+
+
   render() {
+    console.log(this.props)
     const bids=this.props.bids.filter(bid=>{
-      return bid.clientId === this.props.user.userInfo._id
-  }).map(trailer=>{
+      return bid.truckerId === this.props.user.userInfo._id
+  }).map(bid=>{
       return(
-        <Trailerlist key={trailer._id} id={trailer._id} typeOfTrailer={trailer.typeOfTrailer} model={trailer.model} year={trailer.year} carryingCapacityInLbs={trailer.carryingCapacityInLbs} palletCapacity=
-        {trailer.palletCapacity} amountOfTrailers={trailer.amountOfTrailers} />
+        <Bidlist bid={bid.bidAmountInUSD} thisLoad={bid.loadId} />
     )
     })
     return (
     <div className='yourBids'>
     <h1>Your Bids</h1>
+      {bids}
     </div>
     );
   }
