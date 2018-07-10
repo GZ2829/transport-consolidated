@@ -11,7 +11,8 @@ const reducer = combineReducers({
     trucks: truckReducer,
     trailers: trailerReducer,
     loads: loadReducer,
-    user: userReducer
+    user: userReducer,
+    bids: bidReducer
 })
 
 export default createStore(
