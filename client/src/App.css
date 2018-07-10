@@ -418,6 +418,19 @@
   height: 48%;
   overflow: scroll ;
 }
+.bidlist{
+  width: 70%;
+  background-color: white;
+  margin-left: 15%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-color: black;
+  border-width: 2px;
+  border-style: solid;
+}
+.bidlist h4{
+  text-align: center
+}
 .loadtest{
   height: 93%;
   overflow: scroll ;
@@ -430,6 +443,7 @@
   padding-bottom: 4.98%;
   background-position-y: -251px;
   width: 300%;
+  grid-template-rows: repeat(1fr 6)
 }
 
 .loads{
