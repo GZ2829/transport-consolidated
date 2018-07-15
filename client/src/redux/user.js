@@ -6,7 +6,8 @@ const initialState = {
 
     },
     accountType: '',
-    loggedIn: false
+    loggedIn: false,
+    loginfail: false
 }
 
     
@@ -38,6 +39,9 @@ export function login(credentials) {
                 })
             })
             .catch((err) => {
+                dispatch({
+                    type: 'LOGIN_FAIL'
+                })
                 console.error(err);
             });
     }
@@ -58,19 +62,26 @@ const userReducer = (state = initialState, action) => {
             return {
                 userInfo: action.user,
                 accountType: action.user.accountType,
-                loggedIn: true
+                loggedIn: true,
+                loginfail: false
             }
             case "LOGIN" :
             return {
                 userInfo: action.user,
                 accountType: action.user.accountType,
-                loggedIn: true
+                loggedIn: true,
+                loginfail: false
             }
             case "LOGOUT" : 
             return {
                 userInfo: {},
                 accountType: '',
-                loggedIn: false
+                loggedIn: false,
+                loginfail: false
+            }
+            case "LOGIN_FAIL":
+            return{
+                loginfail: true
             }
         default:
             return state

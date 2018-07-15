@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../App.css';
 import { login } from '../redux/user'
 import {connect} from 'react-redux'
+import { Redirect} from 'react-router-dom'
 
 class Homepage extends Component {
     constructor(){
@@ -37,6 +38,7 @@ class Homepage extends Component {
       <div className='homepage3'><h1>We have you covered....</h1></div>
       <div className='homepage4'>
       <div><h3>"From finding a truck for your goods to the recievers dock; we'll get it there..."</h3></div>
+         {this.props.user.loginfail === true ? <h2 className='loginfail'>Login Failed, please try again</h2> : null}
         <form onSubmit={this.userLogin} className="loginform">
           <h4>Log In</h4>
           <input name='email' value={this.state.email} onChange={this.handleInputChange}type='text' placeholder='Email'/>
