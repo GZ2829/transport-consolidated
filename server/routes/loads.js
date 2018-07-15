@@ -1,5 +1,7 @@
 const express = require('express')
+
 const loadRouter = express.Router()
+
 const Loads = require('../models/loads')
 
 loadRouter.get('/', (req,res)=>{
