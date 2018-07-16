@@ -33,6 +33,7 @@ export function login(credentials) {
             .then(response => {
                 localStorage.token = response.data.token
                 initialState.user = JSON.stringify(response.data.user);
+                localStorage.password = JSON.stringify(response.data.user.password)
                 dispatch({
                     type: "LOGIN",
                     user: response.data.user
@@ -81,7 +82,8 @@ const userReducer = (state = initialState, action) => {
             }
             case "LOGIN_FAIL":
             return{
-                loginfail: true
+                loginfail: true,
+                loggedIn: false
             }
         default:
             return state
