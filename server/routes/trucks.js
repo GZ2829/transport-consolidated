@@ -5,7 +5,6 @@ const checkAuth = require('../middleware/check-auth')
 
 
 truckRouter.get('/', checkAuth, (req,res)=>{
-    console.log(req.userData)
     Trucks.find((err, trucks) =>{
         if (err) return res.status(500).send(err)
         return res.status(200).send(trucks)

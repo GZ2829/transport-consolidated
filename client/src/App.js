@@ -27,7 +27,6 @@ const App =() => {
           <Route path='/error' component={Notauth}/>
           <Route path='/profile' component={Profile}/>
       </Switch>
-      
       </div>
     );
 }

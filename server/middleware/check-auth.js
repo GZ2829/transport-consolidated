@@ -4,7 +4,6 @@ module.exports = (req,res, next)=>{
     try {
         const decoded = jwt.verify(localStorage.password, 'superSecret')
            req.userData = decoded
-           return req.userData
         next()
     } catch(error) {
         return res.status(401).json({
