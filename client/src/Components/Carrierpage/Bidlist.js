@@ -45,4 +45,4 @@ class Bidlist extends Component {
   }
 }
 
-export default connect(state=>({ bids: state.bids, loads: state.loads }), { getLoadData })(Bidlist)
+export default connect(state=>({ bids: state.bids, loads: state.loads, user: state.user }), { getLoadData })(Bidlist)
