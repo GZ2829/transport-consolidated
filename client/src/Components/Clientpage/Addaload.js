@@ -17,7 +17,6 @@ class Addaload extends Component {
             needAssistanceLoading: Boolean,
             isGPSRequired: Boolean,
             isRushed: Boolean,
-            clientId: this.props.user.userInfo._id
 
         }
     
@@ -31,6 +30,7 @@ class Addaload extends Component {
         })
     }
     AddALoad(e){
+        console.log(this.props.user.userInfo._id)
         e.preventDefault()
         this.props.addLoad({
             originCity: this.state.originCity,
@@ -42,6 +42,7 @@ class Addaload extends Component {
             needAssistanceLoading: this.state.needAssistanceLoading,
             isGPSRequired: this.state.isGPSRequired,
             isRushed: this.state.isRushed,
+            clientId: this.props.user.userInfo._id
         })
     }
 

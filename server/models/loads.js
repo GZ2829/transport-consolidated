@@ -4,10 +4,9 @@ var Schema = mongoose.Schema;
 
 const loadSchema = new Schema({
     clientId: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
-    
     originCity: {
         type: String,
         required: true
