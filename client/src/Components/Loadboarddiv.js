@@ -74,6 +74,12 @@ editALoad(e){
     e.preventDefault()
    this.props.editLoad(this.props.id, this.state.inputs)
 }
+editALoad2 =() =>{
+     const mak = this.props.bids.filter(bid =>{
+        return bid.loadId === this.props.id
+      })
+      console.log(mak)
+}
 addBid=(e)=>{
     e.preventDefault()
     this.props.addBid({
@@ -81,17 +87,13 @@ addBid=(e)=>{
         truckerId: this.props.user.userInfo._id,
         loadId: this.props.id
     })
-    this.state.bids.filter(bid =>{
-      return bid.loadId === this.props.id})
-    this.props.editLoad({
-        bids: biddy
-    })
     this.setState({
         isToggled1: false,
         bids : {
             bidAmountInUSD: Number
         }
-    }) 
+    })
+    this.editALoad2()
 }
 
 
@@ -103,7 +105,7 @@ addBid=(e)=>{
         <h3>Going To: {this.props.destinationCity}, {this.props.destinationState}</h3>
         <h4>Trailers Needed: {this.props.typeOfTrailers}</h4>
         <h5>In A Rush? {this.props.isRushed}</h5>
-        {user.accountType === 'Client' || user.accountType==='Admin' ? <button onClick={this.toggle}>Edit</button> : null}
+        {user.userInfo._id === this.props.clientId  || user.accountType==='Admin' ? <button onClick={this.toggle}>Edit</button> : null}
         {user.accountType === 'Client' ||  user.accountType==='Admin' ? <button onClick={()=>this.deleteLoad(this.props.id)}>Delete</button> : null}
         {user.accountType ==='Carrier' || user.accountType=== 'Admin' ? <button onClick={this.toggle1}>Bid</button> : null}
         {this.state.isToggled1 ?
@@ -251,4 +253,4 @@ addBid=(e)=>{
   }
 }
 
-export default connect(state=>({user: state.user}), { editLoad, removeLoad, getLoadData, addBid })(Loadboarddiv)
+export default connect(state=>({user: state.user, bids: state.bids}), { editLoad, removeLoad, getLoadData, addBid })(Loadboarddiv)

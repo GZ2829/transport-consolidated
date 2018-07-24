@@ -17,6 +17,7 @@ class Addaload extends Component {
             needAssistanceLoading: Boolean,
             isGPSRequired: Boolean,
             isRushed: Boolean,
+            clientId: this.props.user.userInfo._id
 
         }
     
@@ -186,4 +187,4 @@ class Addaload extends Component {
 }
 
 
-export default connect(state=>({ loads: state.loads }), { addLoad })(Addaload)
+export default connect(state=>({ loads: state.loads, user: state.user }), { addLoad })(Addaload)

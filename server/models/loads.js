@@ -46,10 +46,10 @@ const loadSchema = new Schema({
         type: Boolean,
         required: true,
     },
-    bids :[{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Bid'
-    }]
+    bids :{
+        type: Array,
+        default: []
+    }
 })
 
 module.exports = mongoose.model('Load', loadSchema)
