@@ -19,6 +19,7 @@ class Profile extends Component {
         <h1>Welcome {this.props.user.userInfo.email}</h1>
         <h3>Company: {this.props.user.userInfo.company}</h3>
         <h3>About Yourself: {this.props.user.userInfo.aboutYourself}</h3>
+        <img className='profilepic' src={'https://images.unsplash.com/photo-1522387026079-bd4a4d73115d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=bab7386b1cbe55eae171863d6680b8b8&auto=format&fit=crop&w=2689&q=80'} alt='Insert Photo Here'/>
        </div>
       )
   }
