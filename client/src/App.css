@@ -187,8 +187,10 @@
    grid-column: 1/3;
    grid-row: 2/4;
    margin-left: 30px;
-   height: 200px;
-   width: 200px;
+ }
+ .profilepic1{
+  height: 200px;
+  width: 200px;
  }
  .welcometitle{
    display: inline-block;
@@ -199,6 +201,9 @@
    font-size: 40px;
   font-family: 'Markazi Text', serif;
  }
+ .welcometitle h1{
+  margin-bottom: 0;
+ }
  .company{
    grid-column: 1/3;
    grid-row: 4/5;
@@ -208,6 +213,7 @@
    font-size: 25px;
  }
  .aboutyourself{
+   display: inline-block;
   margin-left: 20px;
   color: white;
   font-family: 'Markazi Text', serif;
