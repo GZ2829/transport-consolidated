@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { getTruckData, addTruck } from '../../redux/trucks'
 import Trucklist from './Trucklist'
 import '../../App.css';
+import { editUser } from '../../redux/user'
 
 
 class Trucks extends Component {
@@ -89,4 +90,4 @@ class Trucks extends Component {
   }
 }
 
-export default connect(state=>({ trucks: state.trucks , user: state.user }), { getTruckData, addTruck })(Trucks)
+export default connect(state=>({ trucks: state.trucks , user: state.user }), { getTruckData, addTruck, editUser })(Trucks)

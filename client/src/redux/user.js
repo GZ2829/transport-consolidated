@@ -57,6 +57,36 @@ export function logout(){
     }
 }
 
+export const editUser = (id, editedUser) => {
+
+    const reduce = Object.keys(editedUser).reduce((final, key)=>{
+
+            if(editedUser[key]){
+
+                return{
+                    ...final,
+                    [key]: editedUser[key]
+                }
+
+            } else{
+
+                return final
+
+            }
+    }, {})
+
+    return dispatch => {
+
+        axios.put(`/users/${id}`, reduce).then(() => {dispatch();
+        
+        }).catch(err => {
+
+            console.log(err);
+
+        })
+    }
+}
+
 const userReducer = (state = initialState, action) => {
     switch(action.type){
             case "SIGN_UP" :
