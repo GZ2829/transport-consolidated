@@ -8,6 +8,7 @@ class Clientbar extends Component {
       return (
         <div className='clientbar'>
             <h2>Welcome To Your Toolbox</h2>
+            <Link to='/clientpage/profile'>Profile</Link>
             <Link to='/clientpage/addaload'>Add A Load</Link>
             <Link to='/clientpage/editaload'>Edit A load</Link>
             <Link to='/clientpage/clientloadboard'>Load Board</Link>

@@ -7,6 +7,7 @@ import Editaload from './Editaload'
 import Clientbar from './Clientbar'
 import Clientloadboard from './Clientloadboard'
 import Footer from '../Footer'
+import Clientprofile from './Clientprofile'
 
 const Clientpage = (props) =>{
    const {match} = props
@@ -15,6 +16,7 @@ const Clientpage = (props) =>{
       <div className="clientpage">
       <Clientbar match={match}/>
       <Switch>
+          <Route path={`${match.url}/profile`} component={Clientprofile}/>
           <Route path={`${match.url}/addaload`} component={AddaLoad}/>
           <Route path={`${match.url}/editaload`} component={Editaload}/>
           <Route path={`${match.url}/clientloadboard`} component={Clientloadboard}/>

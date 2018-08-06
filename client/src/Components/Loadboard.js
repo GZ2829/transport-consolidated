@@ -9,17 +9,6 @@ class Loadboard extends Component {
        super()
 
     this.state = {
-        inputs:{
-            originCity: '',
-            originState: '',
-            destinationCity: '',
-            destinationState: '',
-            typeOfTrailers: '',
-            isPalletized: false,
-            needAssistanceLoading: false,
-            isGPSRequired: false,
-            isRushed: false,
-        }
     }
   }
 

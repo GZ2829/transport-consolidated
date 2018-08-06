@@ -19,7 +19,9 @@ class Editaload extends Component {
 
 
   render() {
-    const loads=this.props.loads.map(load=>{
+    const loads=this.props.loads.filter(load=>{
+      return load.clientId === this.props.user.userInfo._id
+    }).map(load=>{
       return(
        <Loadboarddiv id={load._id} originCity={load.originCity} originState={load.originState} destinationCity={load.destinationCity} destinationState={load.destinationState} typeOfTrailers={load.typeOfTrailers} isPalletized={load.isPalletized} isGPSRequired={load.isGPSRequired} isRushed={load.isRushed} needAssistanceLoading={load.needAssistanceLoading} />
     )
@@ -35,4 +37,4 @@ class Editaload extends Component {
   }
 }
 
-export default connect(state=>({ loads: state.loads }), { getLoadData })(Editaload)
+export default connect(state=>({ loads: state.loads, user: state.user }), { getLoadData })(Editaload)

@@ -74,12 +74,8 @@ editALoad(e){
     e.preventDefault()
    this.props.editLoad(this.props.id, this.state.inputs)
 }
-editALoad2 =() =>{
-     const mak = this.props.bids.filter(bid =>{
-        return bid.loadId === this.props.id
-      })
-      console.log(mak)
-}
+
+
 addBid=(e)=>{
     e.preventDefault()
     this.props.addBid({
@@ -93,7 +89,6 @@ addBid=(e)=>{
             bidAmountInUSD: Number
         }
     })
-    this.editALoad2()
 }
 
 
