@@ -31,7 +31,9 @@ class Bids extends Component {
     return (
     <div className='yourBids'>
     <h1>Your Bids</h1>
+    <div className='bidtest'>
       {bids}
+    </div>
     </div>
     );
   }

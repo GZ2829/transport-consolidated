@@ -287,9 +287,8 @@
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   padding-top: 50px;
-  height: 100vh;
+  height: 107vh;
   background: linear-gradient(to right, rgba(0, 0,0, 0.5)), url(https://images.unsplash.com/photo-1473445730015-841f29a9490b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=bec1372c6bc20f2bc9692bd09b13dfb9&auto=format&fit=crop&w=1650&q=80);
-  padding-bottom: 4.98%;
   background-position-y: -71px;
   background-position-x: 190px
 }
@@ -499,6 +498,12 @@
 }
 .bidlist h4{
   text-align: center
+}
+.bidtest{
+  height: 85%;
+  overflow: scroll ;
+  margin-top: 5%;
+  font-family: 'Markazi Text', serif;
 }
 .loadtest{
   height: 93%;
