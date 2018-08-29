@@ -45,9 +45,9 @@ const loadSchema = new Schema({
         type: Boolean,
         required: true,
     },
-    bids :{
-        type: Array,
-        default: []
+    winningBid :{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Bids'
     }
 })
 
