@@ -102,7 +102,7 @@ addBid=(e)=>{
         <h5>In A Rush? {this.props.isRushed}</h5>
         {user.userInfo._id === this.props.clientId  || user.accountType==='Admin' ? <button onClick={this.toggle}>Edit</button> : null}
         {user.userInfo._id === this.props.clientId  || user.accountType==='Admin' ? <button onClick={()=>this.deleteLoad(this.props.id)}>Delete</button> : null}
-        {user.accountType ==='Carrier' ? <button onClick={this.toggle1}>Bid</button> : null}
+        {user.accountType ==='Carrier' ? <button className='bidbutton' onClick={this.toggle1}>Bid</button> : null}
         {this.state.isToggled1 ?
            <form onSubmit={this.addBid}>
                <input value='number' onChange={this.handleInputChange1} placeholder='Bid Amount In USD' value={this.state.bids.bidAmountInUSD} />

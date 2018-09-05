@@ -25,7 +25,7 @@ class Bids extends Component {
       return bid.truckerId === this.props.user.userInfo._id
   }).map(bid=>{
       return(
-        <Bidlist bid={bid.bidAmountInUSD} thisLoad={bid.loadId} />
+        <Bidlist id={bid._id} bid={bid.bidAmountInUSD} thisLoad={bid.loadId} />
     )
     })
     return (

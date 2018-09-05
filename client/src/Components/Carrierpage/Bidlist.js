@@ -24,17 +24,16 @@ class Bidlist extends Component {
 }
 
   render() {
-      console.log(this.props)
        const load = this.props.loads.filter(load=>{
-            if(load._id = this.props.thisLoad){
-                return true
+            if(load._id === this.props.thisLoad){
+                return load
             }
         }).map(load =>{
             return(
-            <div>
+            <div className='bidload'>
             <h3>Origin: {load.originCity}, {load.originState}</h3>
             <h3>Going To: {load.destinationCity}, {load.destinationState}</h3>
-            <h4>Trailers Needed: {load.typeOfTrailers}</h4>
+            <h3>Trailers Needed: {load.typeOfTrailers}</h3>
             <h5>In A Rush? {load.isRushed}</h5>
             </div>
             )

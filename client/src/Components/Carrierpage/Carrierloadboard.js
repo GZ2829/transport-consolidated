@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { getLoadData } from '../../redux/loads'
 import '../../App.css';
+import Loadboarddiv from '../Loadboarddiv';
 
-class Clientloadboard extends Component {
+class Carrierloadboard extends Component {
   constructor(){
        super()
 
@@ -18,15 +19,9 @@ class Clientloadboard extends Component {
 
 
   render() {
-    console.log(this.props.loads)
     const loads=this.props.loads.map(load=>{
       return(
-        <div className='loads'>
-          <h3>Origin: {load.originCity}, {load.originState}</h3>
-          <h3>Going To: {load.destinationCity}, {load.destinationState}</h3>
-          <h4>Trailers Needed: {load.typeOfTrailers}</h4>
-          <h5>In A Rush? {load.isRushed}</h5>
-        </div>
+        <Loadboarddiv clientId={load.clientId} key={load._id} id={load._id} originCity={load.originCity} originState={load.originState} destinationCity={load.destinationCity} destinationState={load.destinationState} typeOfTrailers={load.typeOfTrailers} isPalletized={load.isPalletized} isGPSRequired={load.isGPSRequired} isRushed={load.isRushed} needAssistanceLoading={load.needAssistanceLoading} />
     )
     })
     return (
@@ -40,4 +35,4 @@ class Clientloadboard extends Component {
   }
 }
 
-export default connect(state=>({ loads: state.loads }), { getLoadData })(Clientloadboard)
+export default connect(state=>({ loads: state.loads }), { getLoadData })(Carrierloadboard)
