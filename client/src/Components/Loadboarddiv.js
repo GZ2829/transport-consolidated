@@ -103,11 +103,11 @@ addBid=(e)=>{
         {user.userInfo._id === this.props.clientId  || user.accountType==='Admin' ? <button onClick={this.toggle}>Edit</button> : null}
         {user.userInfo._id === this.props.clientId  || user.accountType==='Admin' ? <button onClick={()=>this.deleteLoad(this.props.id)}>Delete</button> : null}
         {user.accountType ==='Carrier' ? <button className='bidbutton' onClick={this.toggle1}>Bid</button> : null}
-        {/* {this.state.isToggled1 ?
+        {this.state.isToggled1 ?
            <form onSubmit={this.addBid}>
                <input value='number' onChange={this.handleInputChange1} placeholder='Bid Amount In USD' value={this.state.bids.bidAmountInUSD} />
                <button>Submit</button>
-           </form> : null} */}
+           </form> : null}
         {this.state.isToggled
           ? <form className='loadboardDiv' onSubmit={this.editALoad}>
           <input name='originCity' type='text' onChange={this.handleInputChange} value={this.state.inputs.originCity} placeholder="Origin City"/>
