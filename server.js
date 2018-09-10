@@ -31,22 +31,22 @@ app.use(express.static(path.join(__dirname, "client", "build")))
 // ...
 // Right before your app.listen(), add this:
 app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "./client/build", "index.html"));
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
 
 app.use(bodyParser.json());
 
 app.use(morgan('dev'));
 
-app.use('/user', userRoutes)
+app.use('/api/user', userRoutes)
 
-app.use('/trucks', truckRoutes)
+app.use('/api/trucks', truckRoutes)
 
-app.use('/trailers', trailerRoutes)
+app.use('/api/trailers', trailerRoutes)
 
-app.use('/bids', bidRoutes)
+app.use('/api/bids', bidRoutes)
 
-app.use('/loads', loadRoutes)
+app.use('/api/loads', loadRoutes)
 
 app.listen(process.env.PORT, ()=>{
     console.log('Up and Running')

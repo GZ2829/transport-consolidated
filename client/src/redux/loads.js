@@ -5,7 +5,7 @@ export const getLoadData = () =>{
 
     return dispatch => {
 
-        axios.get('/loads').then(response => {
+        axios.get('/api/loads').then(response => {
 
             dispatch({
                 type: 'GET_LOAD_DATA',
@@ -23,7 +23,7 @@ export const addLoad = addedLoad => {
 
     return dispatch => {
 
-        axios.post("/loads", addedLoad).then(() => {
+        axios.post("/api/loads", addedLoad).then(() => {
 
             dispatch(getLoadData());
 
@@ -38,7 +38,7 @@ export const removeLoad = id => {
 
     return dispatch => {
 
-        axios.delete(`/loads/${id}`).then(() => {
+        axios.delete(`/api/loads/${id}`).then(() => {
 
             dispatch(getLoadData());
 
@@ -69,7 +69,7 @@ export const editLoad = (id, editedLoad) => {
 
     return dispatch => {
 
-        axios.put(`/loads/${id}`, reduce).then(() => {dispatch(getLoadData());
+        axios.put(`/api/loads/${id}`, reduce).then(() => {dispatch(getLoadData());
         
         }).catch(err => {
 
