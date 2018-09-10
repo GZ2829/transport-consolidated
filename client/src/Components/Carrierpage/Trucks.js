@@ -66,7 +66,7 @@ class Trucks extends Component {
       })
     return (
     <div className='trucks'>
-    <h1>Add A Truck</h1>
+    <h1 className='addTrucksh1'>Add A Truck</h1>
     <form className='truckform' onSubmit={this.addTrucks}>
        <input onChange={this.handleInputChange} name='make' value={this.state.make} type='text' placeholder='Make'/>
        <input onChange={this.handleInputChange} name='model' value={this.state.model} type='text' placeholder='Model'/>
@@ -81,7 +81,7 @@ class Trucks extends Component {
     </form>
     <br/>
     <br/>
-    <h1>View Your Trucks</h1>
+    <h1 className='viewTrucks'>View Your Trucks</h1>
     <div className='trucktest'>
     {Vehicles}
     </div>

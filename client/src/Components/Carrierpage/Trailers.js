@@ -67,7 +67,7 @@ class Trailer extends Component {
         <button>Submit</button>
         </form>
         <br/>
-        <h1>View Your Trailers</h1>
+        <h1 id='viewTrailers'>View Your Trailers</h1>
         <div className='trailertest'>
         {trailers}
         </div>

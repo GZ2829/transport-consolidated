@@ -74,7 +74,7 @@ class Trucklist extends Component {
                   <button className='trucksbutton' onClick={this.toggle}>edit</button>
                   <button className='trucksbutton'onClick={()=> this.handleDelete(this.props.id)}>Delete</button>
                 {this.state.isToggled 
-                ? <form onSubmit={this.handleEdit} className='truckEditForm' >
+                ? <form onSubmit={this.handleEdit} id='truckEditForm' className='truckEditForm' >
                 <input 
                     type="text"     
                     value={this.state.inputs.make} 

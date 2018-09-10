@@ -25,7 +25,6 @@ const App =() => {
           <Route path='/signup' component={Signup}/>
           <Route path='/logout' component={Logout}/>
           <Route path='/error' component={Notauth}/>
-          <Route path='/profile' component={Profile}/>
       </Switch>
       </div>
     );
