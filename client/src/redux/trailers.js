@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export const getTrailerData = () =>{
     return dispatch=>{
-        axios.get('/api/trailers').then(response =>{
+        axios.get('/trailers').then(response =>{
             dispatch({
                 type: "GET_TRAILER_DATA",
                 trailers: response.data
@@ -24,7 +24,7 @@ export const editTrailer = (id, editedTrailer) => {
     }, {})
     console.log(reduce)
     return dispatch => {
-        axios.put(`/api/trailers/${id}`, reduce).then(() => {
+        axios.put(`/trailers/${id}`, reduce).then(() => {
             dispatch(getTrailerData());
         }).catch(err => {
             console.log(err);
@@ -34,7 +34,7 @@ export const editTrailer = (id, editedTrailer) => {
 
 export const addTrailer = addedTrailer => {
     return dispatch => {
-        axios.post("/api/trailers", addedTrailer).then(() => {
+        axios.post("/trailers", addedTrailer).then(() => {
             dispatch(getTrailerData());
         }).catch(err => {
             console.log(err);
@@ -43,7 +43,7 @@ export const addTrailer = addedTrailer => {
 }
 export const removeTrailer = id => {
     return dispatch => {
-        axios.delete(`/api/trailers/${id}`).then(() => {
+        axios.delete(`/trailers/${id}`).then(() => {
             dispatch(getTrailerData());
         }).catch(err => {
             console.log(err);

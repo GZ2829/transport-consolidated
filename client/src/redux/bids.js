@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export const getBidData = () =>{
     return dispatch => {
-        axios.get('/api/bids').then(response => {
+        axios.get('/bids').then(response => {
             dispatch({
                 type: 'GET_BID_DATA',
                 bids: response.data
@@ -14,7 +14,7 @@ export const getBidData = () =>{
 }
 export const addBid = addedBid => {
     return dispatch => {
-        axios.post("/api/bids", addedBid).then(() => {
+        axios.post("/bids", addedBid).then(() => {
             dispatch(getBidData());
         }).catch(err => {
             console.log(err);
@@ -24,7 +24,7 @@ export const addBid = addedBid => {
 
 export const removeBid = id => {
     return dispatch => {
-        axios.delete(`/api/bids/${id}`).then(() => {
+        axios.delete(`/bids/${id}`).then(() => {
             dispatch(getBidData());
         }).catch(err => {
             console.log(err);
@@ -44,7 +44,7 @@ export const editBid = (id, editedBid) => {
             }
     }, {})
     return dispatch => {
-        axios.put(`/api/bids/${id}`, reduce).then(() => {
+        axios.put(`/bids/${id}`, reduce).then(() => {
             dispatch(getBidData());
         }).catch(err => {
             console.log(err);

@@ -4,7 +4,7 @@ import axios from 'axios'
 
 export const getTruckData =() =>{
     return dispatch =>{
-        axios.get('/api/trucks').then(response =>{
+        axios.get('/trucks').then(response =>{
             dispatch({
                 type: "GET_TRUCK_DATA",
                 trucks: response.data
