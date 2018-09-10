@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { getLoadData } from '../../redux/loads'
 import '../../App.css';
-import Loadboarddiv from '../Loadboarddiv'
+import Editloads from '../Clientpage/Editloads'
 
 class Editaload extends Component {
   constructor(){
@@ -23,7 +23,7 @@ class Editaload extends Component {
       return load.clientId === this.props.user.userInfo._id
     }).map(load=>{
       return(
-       <Loadboarddiv key={load._id + 1} id={load._id} originCity={load.originCity} originState={load.originState} destinationCity={load.destinationCity} destinationState={load.destinationState} typeOfTrailers={load.typeOfTrailers} isPalletized={load.isPalletized} isGPSRequired={load.isGPSRequired} isRushed={load.isRushed} needAssistanceLoading={load.needAssistanceLoading} />
+       <Editloads key={load._id + 1} id={load._id} originCity={load.originCity} originState={load.originState} destinationCity={load.destinationCity} destinationState={load.destinationState} typeOfTrailers={load.typeOfTrailers} isPalletized={load.isPalletized} isGPSRequired={load.isGPSRequired} isRushed={load.isRushed} needAssistanceLoading={load.needAssistanceLoading} />
     )
     })
     return (

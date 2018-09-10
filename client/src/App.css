@@ -295,7 +295,6 @@
   height: 107vh;
   background: linear-gradient(to right, rgba(0, 0,0, 0.5)), url(./Pictures/Black&WhiteTruck.jpeg);
   background-position-y: -71px;
-  background-position-x: 190px
 }
 .carrierbar{
   grid-column: 1/2;
@@ -350,7 +349,8 @@
   height: 16%;
   border-radius: 10%;
   grid-row-gap: 10%;
-   padding-left: 8%
+   padding-left: 8%;
+   padding-right: 8%
 }
 .truckEditform{
   display: grid;
@@ -426,7 +426,9 @@
 
 }
 .trailerform{
-  margin-left: 0
+  display: grid;
+  margin-left: 0;
+  grid-column: 1/-1
 }
 .trailer1{
   background-color: white;
@@ -439,9 +441,7 @@
   margin-right: 10%;
   font-family: 'Markazi Text', serif;
 }
-.trailer1 button{
-  width: 50%
-}
+
 .trailer{
   background-color: white;
   border-style: solid;
@@ -454,16 +454,11 @@
   height: 100%;
   font-family: 'Markazi Text', serif;
 }
-.traileredit{
-  width: 50%;
-}
-.trailerdelete{
-  width: 100%
-}
 .trailer form{
   display: grid;
+  grid: 1/-1;
   grid-template-columns: 1fr 1fr;
-  width: 148.1%;
+  width: 100%;
 }
 .trailers h1{
   text-align: center;
@@ -732,8 +727,23 @@
   .truck1 {
     height: 197%;
 }
+.viewTrucks{
+  margin-top: 30%;
+ }
 .trailers form button {
   background-color: gray;
+}
+.trailer form{
+  display: grid;
+  grid: 1/-1;
+  grid-template-columns: 1fr;
+  width: 100%;
+}
+.addATrailer{
+  grid-template-columns: 1fr;
+}
+#viewTrailers{
+  margin-top: 30%;
 }
 /* Client Page */
 .addaload form select {
@@ -744,6 +754,23 @@
   font-family: 'Markazi Text', serif;
   background-color: gray;
  }
+ .loadboardDiv {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+  font-size: 20px;
+}
+.loads {
+  background-color: white;
+  border-style: solid;
+  border-width: 5px;
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-left: 10%;
+  margin-right: 10%;
+  overflow: scroll;
+  font-family: 'Markazi Text', serif;
+}
 }
 
 @media(max-width: 515px){
@@ -766,7 +793,7 @@
   .loginform {
     grid-column: 2/4;
     grid-row: 1/2;
-    padding-top: 11px;
+    padding-top: 0px;
 }
 .homepage4 h3 {
   font-size: 15px;
@@ -774,12 +801,12 @@
 }
 .loginfail{
   grid-column: 1/-1;
-  grid-row: 2/3;
+  grid-row: 2/-1;
 }
 .loadboardDiv {
   display: grid;
   grid-template-columns: 1fr;
-  width: 200%;
+  width: 50%;
   font-size: 20px;
 }
 .loadboardDiv button {
@@ -792,9 +819,9 @@
 .carrierpage {
   background-position-x: -100px;
 }
-.viewTrucks {
-  margin-top: 59%;
-}
+.viewTrucks{
+  margin-top: 45%;
+ }
 .trucks form select {
   width: 65%;
 }
@@ -808,7 +835,10 @@
   grid-gap: 0%;
 }
 #viewTrailers{
-  margin-top: 30%;
+  margin-top: 40%;
+}
+.bidload {
+  grid-template-columns: 1fr;
 }
 .loads {
   grid-template-columns: 1fr;

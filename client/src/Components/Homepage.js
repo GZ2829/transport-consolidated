@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import '../App.css';
 import { login } from '../redux/user'
 import {connect} from 'react-redux'
-import { Redirect} from 'react-router-dom'
 
 class Homepage extends Component {
     constructor(){
@@ -41,7 +40,7 @@ class Homepage extends Component {
         <form onSubmit={this.userLogin} className="loginform">
           <h4>Log In</h4>
           <input name='email' value={this.state.email} onChange={this.handleInputChange}type='text' placeholder='Email'/>
-          <input name='password' value={this.state.password} onChange={this.handleInputChange}type='text' placeholder='Password'/>
+          <input name='password' value={this.state.password} onChange={this.handleInputChange}type='password' placeholder='Password'/>
           <button>Submit</button>
         </form>
       </div> 

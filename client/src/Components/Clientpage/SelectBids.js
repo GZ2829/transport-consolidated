@@ -66,16 +66,15 @@ addBid=(e)=>{
 
 
   render() {
-      console.log(this.props)
        const bids = this.props.bids.filter(bid =>{
-            bid.loadId === this.props.id
-            return true
+            if(bid.loadId === this.props.id){
+            return bid
+        }
       }).map(bid =>{
           return(
               <div>
-                <h4>Bid Amount: {bid.bidAmountInUSD}</h4>
+                <h3>Bid Amount: {bid.bidAmountInUSD}</h3>
                 <button>Accept Bid</button>
-
               </div>
           )
       })
