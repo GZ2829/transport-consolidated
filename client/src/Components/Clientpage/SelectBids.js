@@ -70,7 +70,6 @@ addBid=(e)=>{
 
 
   render() {
-      console.log(this.state.isToggled)
        const bids = this.props.bids.filter(bid =>{
             if(bid.loadId === this.props.id){
             return bid

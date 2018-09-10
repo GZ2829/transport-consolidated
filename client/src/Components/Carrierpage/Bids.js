@@ -20,12 +20,11 @@ class Bids extends Component {
 
 
   render() {
-    console.log(this.props)
     const bids=this.props.bids.filter(bid=>{
       return bid.truckerId === this.props.user.userInfo._id
   }).map(bid=>{
       return(
-        <Bidlist id={bid._id} bid={bid.bidAmountInUSD} thisLoad={bid.loadId} />
+        <Bidlist id={bid._id} bid={bid.bidAmountInUSD} winningBid={bid.winningBid} thisLoad={bid.loadId} />
     )
     })
     return (

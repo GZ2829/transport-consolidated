@@ -18,7 +18,6 @@ class Clientloadboard extends Component {
 
 
   render() {
-    console.log(this.props.loads)
     const loads=this.props.loads.filter(load=>{
       if(load.winningBid === undefined){
         return load

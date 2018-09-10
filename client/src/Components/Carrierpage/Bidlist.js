@@ -25,7 +25,7 @@ class Bidlist extends Component {
 
   render() {
        const load = this.props.loads.filter(load=>{
-            if(load._id === this.props.thisLoad && load.winningBid === undefined){
+            if(load._id === this.props.thisLoad){
                 return load
             }
         }).map(load =>{
@@ -39,7 +39,7 @@ class Bidlist extends Component {
             )
         })
     return (
-      <div className="bidlist">
+      <div style={{backgroundColor: this.props.winningBid ? 'green' : 'white' }} className="bidlist">
             <h4>Bid Amount: {this.props.bid}</h4>
             <button onClick={this.toggle}>Load Details</button>
             { this.state.isToggled ? <div>{load}</div> : null}
