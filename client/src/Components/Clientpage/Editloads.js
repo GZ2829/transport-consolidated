@@ -57,7 +57,6 @@ editALoad(e){
 
 
   render() {
-      const {user} = this.props
     return (
         <div className='loads'>
         <h3>Origin: {this.props.originCity}, {this.props.originState}</h3>

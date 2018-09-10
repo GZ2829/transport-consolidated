@@ -19,9 +19,8 @@ class Clientloadboard extends Component {
 
   render() {
     const loads=this.props.loads.filter(load=>{
-      if(load.winningBid === undefined){
-        return load
-      }}).map((load)=>{
+      return load.winningBid === undefined
+    }).map((load)=>{
       return(
         <div className='loads'>
           <h3>Origin: {load.originCity}, {load.originState}</h3>

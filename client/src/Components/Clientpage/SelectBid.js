@@ -20,9 +20,8 @@ class SelectBid extends Component {
 
   render() {
     const loads=this.props.loads.filter(load=>{
-       if(load.clientId === this.props.user.userInfo._id && load.winningBid === undefined){
-         return load
-       }
+       return load.clientId === this.props.user.userInfo._id && load.winningBid === undefined
+        
       }).map(load=>{
         return(
          <SelectBids key={load._id + 1} id={load._id} originCity={load.originCity} originState={load.originState} destinationCity={load.destinationCity} destinationState={load.destinationState} typeOfTrailers={load.typeOfTrailers} isPalletized={load.isPalletized} isGPSRequired={load.isGPSRequired} isRushed={load.isRushed} needAssistanceLoading={load.needAssistanceLoading} />

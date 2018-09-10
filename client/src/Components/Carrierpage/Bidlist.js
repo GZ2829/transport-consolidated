@@ -25,9 +25,7 @@ class Bidlist extends Component {
 
   render() {
        const load = this.props.loads.filter(load=>{
-            if(load._id === this.props.thisLoad){
-                return load
-            }
+            return load._id === this.props.thisLoad
         }).map(load =>{
             return(
             <div className='bidload'>

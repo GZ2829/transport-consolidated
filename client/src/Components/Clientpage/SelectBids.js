@@ -71,9 +71,7 @@ addBid=(e)=>{
 
   render() {
        const bids = this.props.bids.filter(bid =>{
-            if(bid.loadId === this.props.id){
-            return bid
-        }
+            return bid.loadId === this.props.id
       }).map(bid =>{
           return(
               <div className='selectedBid'>

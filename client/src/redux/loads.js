@@ -13,7 +13,6 @@ export const getLoadData = () =>{
             })
 
         }).catch(err => {
-
             console.log(err)
         })
     }
