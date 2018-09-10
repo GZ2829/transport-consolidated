@@ -22,7 +22,7 @@ export const addLoad = addedLoad => {
 
     return dispatch => {
 
-        axios.post("mongodb://heroku_j1rwws92:dpabuds5c35vl2s5curi40qg7s@ds251622.mlab.com:51622/heroku_j1rwws92/loads", addedLoad).then(() => {
+        axios.post("/loads", addedLoad).then(() => {
 
             dispatch(getLoadData());
 
@@ -37,7 +37,7 @@ export const removeLoad = id => {
 
     return dispatch => {
 
-        axios.delete(`mongodb://heroku_j1rwws92:dpabuds5c35vl2s5curi40qg7s@ds251622.mlab.com:51622/heroku_j1rwws92/loads/${id}`).then(() => {
+        axios.delete(`/loads/${id}`).then(() => {
 
             dispatch(getLoadData());
 
@@ -68,7 +68,7 @@ export const editLoad = (id, editedLoad) => {
 
     return dispatch => {
 
-        axios.put(`mongodb://heroku_j1rwws92:dpabuds5c35vl2s5curi40qg7s@ds251622.mlab.com:51622/heroku_j1rwws92/loads/${id}`, reduce).then(() => {dispatch(getLoadData());
+        axios.put(`/loads/${id}`, reduce).then(() => {dispatch(getLoadData());
         
         }).catch(err => {
 
