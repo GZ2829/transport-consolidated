@@ -19,7 +19,10 @@ class Carrierloadboard extends Component {
 
 
   render() {
-    const loads=this.props.loads.map(load=>{
+    const loads= this.props.loads.filter(load=>{
+      if(load.winningBid === undefined){
+        return load
+      }}).map(load=>{
       return(
         <Loadboarddiv clientId={load.clientId} key={load._id} id={load._id} originCity={load.originCity} originState={load.originState} destinationCity={load.destinationCity} destinationState={load.destinationState} typeOfTrailers={load.typeOfTrailers} isPalletized={load.isPalletized} isGPSRequired={load.isGPSRequired} isRushed={load.isRushed} needAssistanceLoading={load.needAssistanceLoading} />
     )

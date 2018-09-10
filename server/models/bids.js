@@ -22,7 +22,11 @@ const bidSchema = new Schema({
     bidderTrailers:[{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Trailer'
-    }]
+    }],
+    winningBid:{
+        type: Boolean,
+        default: false
+    }
 })
 
 module.exports = mongoose.model('Bid', bidSchema)

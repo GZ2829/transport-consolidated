@@ -55,7 +55,6 @@ class Trucks extends Component {
 
 
    render() {
-       console.log(this.props)
       const {trucks} = this.props
       const Vehicles=trucks.filter(truck=>{
           return truck.clientId === this.props.user.userInfo._id

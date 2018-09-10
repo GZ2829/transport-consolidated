@@ -47,7 +47,8 @@ const loadSchema = new Schema({
     },
     winningBid :{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Bids'
+        ref: 'Bids',
+        required: false,
     }
 })
 

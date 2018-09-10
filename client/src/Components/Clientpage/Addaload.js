@@ -17,7 +17,7 @@ class Addaload extends Component {
             needAssistanceLoading: Boolean,
             isGPSRequired: Boolean,
             isRushed: Boolean,
-
+            winningBid: '',
         }
     
         this.handleInputChange = this.handleInputChange.bind(this)
@@ -42,7 +42,7 @@ class Addaload extends Component {
             needAssistanceLoading: this.state.needAssistanceLoading,
             isGPSRequired: this.state.isGPSRequired,
             isRushed: this.state.isRushed,
-            clientId: this.props.user.userInfo._id
+            clientId: this.props.user.userInfo._id,
         })
     }
 
