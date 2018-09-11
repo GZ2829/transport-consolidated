@@ -17,9 +17,12 @@ class Homepage extends Component {
 
     handleInputChange = event => {
       const {name, value} = event.target;
-      this.setState({
-          [name]: value
-      })
+      this.setState(prevState=>({
+          inputs: {
+              ...prevState.inputs,
+              [name]: value
+          },
+      }))
   }
     userLogin(e){
       e.preventDefault()
