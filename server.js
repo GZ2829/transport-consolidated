@@ -8,7 +8,12 @@ const morgan = require('morgan');
 
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/taskmanager');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/taskmanager', (err) => {
+    if (err) {
+        throw err
+    }
+    console.log("Connected to MongoDB")
+});
 
 const userRoutes = require('./routes/user')
 

@@ -6,7 +6,7 @@ export const getLoadData = () =>{
     return dispatch => {
 
         axios.get('/loads').then(response => {
-
+            
             dispatch({
                 type: 'GET_LOAD_DATA',
                 loads: response.data

@@ -7,6 +7,7 @@ const Loads = require('../models/loads')
 loadRouter.get('/', (req,res)=>{
     Loads.find((err, load) =>{
         if (err) return res.status(500).send(err)
+        console.log(load)
         return res.status(200).send(load)
     })
 })
