@@ -30,24 +30,25 @@ app.use(express.static(path.join(__dirname, "client", "build")))
 
 // ...
 // Right before your app.listen(), add this:
+if (process.env.NODE_ENV === 'production') {
     app.get(/^\/(?!api).*/, (req, res) => { // don't serve react app to api routes
       res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
     });
-
+};
 
 app.use(bodyParser.json());
 
 app.use(morgan('dev'));
 
-app.use('/api/user', userRoutes)
+app.use('/user', userRoutes)
 
-app.use('/api/trucks', truckRoutes)
+app.use('/trucks', truckRoutes)
 
-app.use('/api/trailers', trailerRoutes)
+app.use('/trailers', trailerRoutes)
 
-app.use('/api/bids', bidRoutes)
+app.use('/bids', bidRoutes)
 
-app.use('/api/loads', loadRoutes)
+app.use('/loads', loadRoutes)
 
 app.listen(process.env.PORT, ()=>{
     console.log('Up and Running')
