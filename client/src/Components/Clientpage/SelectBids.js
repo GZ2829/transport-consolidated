@@ -32,7 +32,8 @@ class SelectBids extends Component {
 
 
 selectBid(input){
-    // confirm(message: 'Are you sure you want to select this bed?')
+    window.confirm('Are you sure you want to choose this bid?')
+
    this.props.editLoad(this.props.id, {
     originCity: this.props.originCity,
     originState: this.props.originState,
@@ -45,6 +46,7 @@ selectBid(input){
     isRushed: this.props.isRushed,
     winningBid: input
    })
+   
    this.props.editBid(input, {
         winningBid: true
    })

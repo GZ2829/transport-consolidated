@@ -23,7 +23,7 @@ class Editaload extends Component {
       return load.clientId === this.props.user.userInfo._id && load.winningBid === undefined
     }).map(load=>{
       return(
-       <Editloads key={load._id + 1} id={load._id} originCity={load.originCity} originState={load.originState} destinationCity={load.destinationCity} destinationState={load.destinationState} typeOfTrailers={load.typeOfTrailers} isPalletized={load.isPalletized} isGPSRequired={load.isGPSRequired} isRushed={load.isRushed} needAssistanceLoading={load.needAssistanceLoading} />
+       <Editloads key={load._id + 1} id={load._id} load={load} />
     )
     })
     return (

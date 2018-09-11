@@ -9,12 +9,6 @@ class Trailer extends Component {
        super()
 
     this.state = {
-        typeOfTrailer: '',
-        model: '',
-        year: Number, 
-        carryingCapacityInLbs: Number,
-        palletCapacity: Number,
-        amountOfTrailers: Number
 
     }
     this.handleInputChange= this.handleInputChange.bind(this)

@@ -6,18 +6,18 @@ import { removeTrailer, editTrailer } from '../../redux/trailers'
 
 
 class Trailerlist extends Component {
-    constructor(){
-        super()
-        this.state ={
+    constructor(props){
+        super(props)
+        this.state={
            inputs:{
-            typeOfTrailer: '',
-            model: '',
-            year: Number, 
-            carryingCapacityInLbs: Number,
-            palletCapacity: Number,
-            amountOfTrailers: Number
-           }
-
+            typeOfTrailer: props.typeOfTrailer,
+            model: props.model,
+            year: props.year, 
+            carryingCapacityInLbs: props.carryingCapacityInLbs,
+            palletCapacity: props.palletCapacity,
+            amountOfTrailers: props.amountOfTrailers
+           },
+           isToggled: false,
         }
         this.handleInputChange=this.handleInputChange.bind(this)
         this.toggle = this.toggle.bind(this)
@@ -26,7 +26,6 @@ class Trailerlist extends Component {
     }
 
     componentDidMount(){
-        this.props.getTrailerData()
     }
 
     handleInputChange = event => {
@@ -49,6 +48,7 @@ class Trailerlist extends Component {
     }
 
     handleDelete(){
+         window.confirm('Are you sure you want to delete this Trailer?')
             this.props.removeTrailer(this.props.id)
     }
 
@@ -79,18 +79,18 @@ class Trailerlist extends Component {
             ? <form className='trailerform' onSubmit={this.handleSubmit}>
                 <input 
                     type="text"     
-                    value={this.state.typeOfTrailer} 
+                    value={this.state.inputs.typeOfTrailer} 
                     name="typeOfTrailer" 
                     onChange={ this.handleInputChange }
                     placeholder="Type Of Trailer"/>
                 <input 
                     type="text" 
-                    value={this.state.model} 
+                    value={this.state.inputs.model} 
                     name="model" 
                     onChange={ this.handleInputChange }
                     placeholder="Model"/>
                 <input type='number'
-                       value={this.state.year}
+                       value={this.state.inputs.year}
                        name='year'
                        onChange={this.handleInputChange}
                        placeholder='Year'/>
@@ -98,16 +98,16 @@ class Trailerlist extends Component {
                         name='carryingCapacityInLbs'
                         onChange={this.handleInputChange}
                         placeholder='Carrying Capacity'
-                        value={this.state.carryingCapacityInLbs}/>
+                        value={this.state.inputs.carryingCapacityInLbs}/>
                 <input type='number' 
                         name='palletCapacity'
                         placeholder='Pallet Capacity'
-                        value={this.state.palletCapacity}
+                        value={this.state.inputs.palletCapacity}
                         onChange={this.handleInputChange}/>
                 <input  type='number'
                         name='amountOfTrailers'
                         placeholder='Amount Of Trailers'
-                        value={this.state.amountOfTrailers}
+                        value={this.state.inputs.amountOfTrailers}
                         onChange={this.handleInputChange}/>
                     <button>Submit</button>
                 </form>

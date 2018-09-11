@@ -37,7 +37,6 @@ class Loadboarddiv extends Component {
   }
 
   componentDidMount(){
-    // this.props.getLoadData()
   }
   toggle(){
     this.setState(prevState => {
@@ -68,6 +67,7 @@ handleInputChange1 = event => {
     }})
 }
 deleteLoad(){
+    window.confirm('Are you sure you want to delete this load?')
     this.props.removeLoad(this.props.load._id)
 }
 

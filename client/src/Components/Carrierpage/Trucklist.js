@@ -4,17 +4,17 @@ import '../../App.css';
 import { getTruckData, removeTruck, editTruck } from '../../redux/trucks'
 
 class Trucklist extends Component {
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state ={
             inputs:{
-                make: '',
-                model: '',
-                year: Number,
-                amountOfTrucks: Number,
-                class: '',
-                isToggled: false,
-            }
+                make: props.make,
+                model: props.model,
+                year: props.year,
+                amountOfTrucks: props.amountOfTrucks,
+                class: props.class,
+            },
+            isToggled: false,
 
         }
         this.handleInputChange=this.handleInputChange.bind(this)
@@ -46,6 +46,7 @@ class Trucklist extends Component {
     }
 
     handleDelete(){
+        window.confirm('Are you sure you want to delete this truck?')
             this.props.removeTruck(this.props.id)
     }
 

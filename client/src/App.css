@@ -352,9 +352,15 @@
    padding-left: 8%;
    padding-right: 8%
 }
-.truckEditform{
+#truckEditform{
   display: grid;
-  grid-template-columns: 1fr 1fr
+  grid-template-columns: 1fr 1fr;
+  grid-column: 1/3;
+  height: 100%;
+  -ms-flex-pack: center;
+  justify-content: center;
+  position: relative;
+  left: 0;
 }
 .trucks form input{
   font-size: 25px;
@@ -397,9 +403,13 @@
 }
 .truck1 form{
   grid-column: 1/3;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 99%;
+  -ms-flex-pack: center;
   justify-content: center;
   position: relative;
-  left: 2.5%;
+  left: 0;
 }
 .truck12{
   grid-column: span 2;
@@ -408,7 +418,7 @@
 }
 .truck1Submit{
   height: 40px;
-  width: 48%;
+  width: 100%;
   font-family: 'Markazi Text', serif;
   font-size: 25px;
 }
@@ -708,6 +718,12 @@
       height: 35vh;
       margin-top: 3%;
      }
+     .truck1 form{
+      grid-column: 1/-1;
+      display: grid;
+      width: 100%;
+      grid-template-columns: 1fr 1fr;
+    }
      .addTruckSubmit {
       height: 35px;
      }
@@ -746,6 +762,11 @@
   .truck1 {
     height: 197%;
 }
+.truck1 form{
+  grid-column: 1/3;
+  display: grid;
+  grid-template-columns:  1fr;
+}
 .viewTrucks{
   margin-top: 30%;
  }
@@ -763,6 +784,10 @@
 }
 #viewTrailers{
   margin-top: 30%;
+}
+.trailer {
+  grid-template-columns: 1fr;
+  height: 200%;
 }
 /* Client Page */
 .addaload form select {
@@ -860,6 +885,10 @@
   width: 60%;
  
 }
+.truck {
+  grid-template-columns: 1fr;
+
+}
 .addATrailer {
   grid-template-columns: 1fr;
   grid-gap: 0%;
@@ -880,6 +909,7 @@
 }
 .trailer {
   grid-template-columns: 1fr;
+  height: 200%;
 }
 .trailer1 {
   grid-template-columns: 1fr;
