@@ -3,24 +3,25 @@ import { connect } from 'react-redux'
 import { editLoad, getLoadData, removeLoad } from '../redux/loads'
 import { addBid } from '../redux/bids'
 import '../App.css';
+import stateOpts from "../states.json"
 
 class Loadboarddiv extends Component {
-  constructor(){
-       super()
+  constructor(props){
+       super(props)
 
     this.state = {
         isToggled1: false,
         isToggled: false,
         inputs:{
-            originCity: '',
-            originState: '',
-            destinationCity: '',
-            destinationState: '',
-            typeOfTrailers: '',
-            isPalletized: Boolean,
-            needAssistanceLoading: Boolean,
-            isGPSRequired: Boolean,
-            isRushed: Boolean,
+            originCity: props.load.originCity,
+            originState: props.load.originState,
+            destinationCity: props.load.destinationCity,
+            destinationState: props.load.destinationState,
+            typeOfTrailers: props.load.typeOfTrailers,
+            isPalletized: props.load.isPalletized,
+            needAssistanceLoading: props.load.needAssistanceLoading,
+            isGPSRequired: props.load.isGPSRequired,
+            isRushed: props.load.isRushed,
         },
         bids:{
             bidAmountInUSD: Number
@@ -36,7 +37,7 @@ class Loadboarddiv extends Component {
   }
 
   componentDidMount(){
-    this.props.getLoadData()
+    // this.props.getLoadData()
   }
   toggle(){
     this.setState(prevState => {
@@ -67,12 +68,12 @@ handleInputChange1 = event => {
     }})
 }
 deleteLoad(){
-    this.props.removeLoad(this.props.id)
+    this.props.removeLoad(this.props.load._id)
 }
 
 editALoad(e){
     e.preventDefault()
-   this.props.editLoad(this.props.id, this.state.inputs)
+   this.props.editLoad(this.props.load._id, this.state.inputs)
 }
 
 
@@ -81,7 +82,7 @@ addBid=(e)=>{
     this.props.addBid({
         bidAmountInUSD: this.state.bids.bidAmountInUSD,
         truckerId: this.props.user.userInfo._id,
-        loadId: this.props.id
+        loadId: this.props.load._id
     })
     this.setState({
         isToggled1: false,
@@ -93,15 +94,16 @@ addBid=(e)=>{
 
 
   render() {
+      const stateOptions = stateOpts.map(state => <option value={state.name}>{state.name}</option>)
       const {user} = this.props
     return (
         <div className='loads'>
-        <h3>Origin: {this.props.originCity}, {this.props.originState}</h3>
-        <h3>Going To: {this.props.destinationCity}, {this.props.destinationState}</h3>
-        <h4>Trailers Needed: {this.props.typeOfTrailers}</h4>
-        <h5>In A Rush? {this.props.isRushed}</h5>
+        <h3>Origin: {this.props.load.originCity}, {this.props.load.originState}</h3>
+        <h3>Going To: {this.props.load.destinationCity}, {this.props.load.destinationState}</h3>
+        <h4>Trailers Needed: {this.props.load.typeOfTrailers}</h4>
+        <h5>In A Rush? {this.props.load.isRushed}</h5>
         {user.userInfo._id === this.props.clientId  || user.accountType==='Admin' ? <button onClick={this.toggle}>Edit</button> : null}
-        {user.userInfo._id === this.props.clientId  || user.accountType==='Admin' ? <button onClick={()=>this.deleteLoad(this.props.id)}>Delete</button> : null}
+        {user.userInfo._id === this.props.clientId  || user.accountType==='Admin' ? <button onClick={()=>this.deleteLoad(this.props.load._id)}>Delete</button> : null}
         {user.accountType ==='Carrier' ? <button className='bidbutton' onClick={this.toggle1}>Bid</button> : null}
         {this.state.isToggled1 ?
            <form onSubmit={this.addBid}>
@@ -111,113 +113,19 @@ addBid=(e)=>{
         {this.state.isToggled
           ? <form className='loadboardDiv' onSubmit={this.editALoad}>
           <input name='originCity' type='text' onChange={this.handleInputChange} value={this.state.inputs.originCity} placeholder="Origin City"/>
+          
           <select name='originState' onChange={this.handleInputChange} value={this.state.inputs.originState}>
               <option>Origin State</option>
-              <option value='AL'>AL</option>
-              <option value='AK'>AK</option>
-              <option value='AR'>AR</option>
-              <option value='AZ'>AZ</option>
-              <option value='CA'>CA</option>
-              <option value='CO'>CO</option>
-              <option value='CT'>CT</option>
-              <option value='DE'>DE</option>
-              <option value='FL'>FL</option>
-              <option value='GA'>GA</option>
-              <option value='HI'>HI</option>
-              <option value='IA'>IA</option>
-              <option value='ID'>ID</option>
-              <option value='IL'>IL</option>
-              <option value='IN'>IN</option>
-              <option value='KS'>KS</option>
-              <option value='KY'>KY</option>
-              <option value='LA'>LA</option>
-              <option value='MA'>MA</option>
-              <option value='MD'>MD</option>
-              <option value='ME'>ME</option>
-              <option value='MI'>MI</option>
-              <option value='MN'>MN</option>
-              <option value='MO'>MO</option>
-              <option value='MS'>MS</option>
-              <option value='MT'>MT</option>
-              <option value='NC'>NC</option>
-              <option value='ND'>ND</option>
-              <option value='NE'>NE</option>
-              <option value='NH'>NH</option>
-              <option value='NJ'>NJ</option>
-              <option value='NM'>NM</option>
-              <option value='NV'>NV</option>
-              <option value='NY'>NY</option>
-              <option value='OH'>OH</option>
-              <option value='OK'>OK</option>
-              <option value='OR'>OR</option>
-              <option value='PA'>PA</option>
-              <option value='RI'>RI</option>
-              <option value='SC'>SC</option>
-              <option value='SD'>SD</option>
-              <option value='TN'>TN</option>
-              <option value='TX'>TX</option>
-              <option value='UT'>UT</option>
-              <option value='VA'>VA</option>
-              <option value='VT'>VT</option>
-              <option value='WA'>WA</option>
-              <option value='WI'>WI</option>
-              <option value='WV'>WV</option>
-              <option value='WY'>WY</option>
+              {stateOptions}
           </select>
+
           <input name='destinationCity' onChange={this.handleInputChange} type='text' value={this.state.inputs.destinationCity} placeholder='Destination City'/>
+          
           <select name='destinationState' onChange={this.handleInputChange} value={this.state.inputs.destinationState}>
               <option>Destination State</option>
-              <option value='AL'>AL</option>
-              <option value='AK'>AK</option>
-              <option value='AR'>AR</option>
-              <option value='AZ'>AZ</option>
-              <option value='CA'>CA</option>
-              <option value='CO'>CO</option>
-              <option value='CT'>CT</option>
-              <option value='DE'>DE</option>
-              <option value='FL'>FL</option>
-              <option value='GA'>GA</option>
-              <option value='HI'>HI</option>
-              <option value='IA'>IA</option>
-              <option value='ID'>ID</option>
-              <option value='IL'>IL</option>
-              <option value='IN'>IN</option>
-              <option value='KS'>KS</option>
-              <option value='KY'>KY</option>
-              <option value='LA'>LA</option>
-              <option value='MA'>MA</option>
-              <option value='MD'>MD</option>
-              <option value='ME'>ME</option>
-              <option value='MI'>MI</option>
-              <option value='MN'>MN</option>
-              <option value='MO'>MO</option>
-              <option value='MS'>MS</option>
-              <option value='MT'>MT</option>
-              <option value='NC'>NC</option>
-              <option value='ND'>ND</option>
-              <option value='NE'>NE</option>
-              <option value='NH'>NH</option>
-              <option value='NJ'>NJ</option>
-              <option value='NM'>NM</option>
-              <option value='NV'>NV</option>
-              <option value='NY'>NY</option>
-              <option value='OH'>OH</option>
-              <option value='OK'>OK</option>
-              <option value='OR'>OR</option>
-              <option value='PA'>PA</option>
-              <option value='RI'>RI</option>
-              <option value='SC'>SC</option>
-              <option value='SD'>SD</option>
-              <option value='TN'>TN</option>
-              <option value='TX'>TX</option>
-              <option value='UT'>UT</option>
-              <option value='VA'>VA</option>
-              <option value='VT'>VT</option>
-              <option value='WA'>WA</option>
-              <option value='WI'>WI</option>
-              <option value='WV'>WV</option>
-              <option value='WY'>WY</option>
+              {stateOptions}
           </select>
+
           <input name='typeOfTrailers' onChange={this.handleInputChange} value={this.state.inputs.typeOfTrailers} type='text' placeholder="Type Of Trailers Needed"/>
           <select name='isPalletized' onChange={this.handleInputChange} value={this.state.inputs.isPalletized}>
               <option>Is Palletized?</option>

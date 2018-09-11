@@ -35,11 +35,11 @@ app.use(express.static(path.join(__dirname, "client", "build")))
 
 // ...
 // Right before your app.listen(), add this:
-if (process.env.NODE_ENV === 'production') {
-    app.get(/^\/(?!api).*/, (req, res) => { // don't serve react app to api routes
-      res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-    });
-};
+// if (process.env.NODE_ENV === 'production') {
+//     app.get(/^\/(?!api).*/, (req, res) => { // don't serve react app to api routes
+//       res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+//     });
+// };
 
 app.use(bodyParser.json());
 
@@ -54,6 +54,10 @@ app.use('/trailers', trailerRoutes)
 app.use('/bids', bidRoutes)
 
 app.use('/loads', loadRoutes)
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"))
+})
 
 app.listen(process.env.PORT, ()=>{
     console.log('Up and Running')
