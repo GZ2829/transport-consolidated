@@ -10,11 +10,11 @@ const initialState = {
     loginfail: false
 }
 
-if(localStorage.token){
-    let parsedLocal = JSON.parse(localStorage.user)
-     initialState.loggedIn = true
-     initialState.userInfo = parsedLocal
-     initialState.accountType = parsedLocal.accountType
+if(localStorage.token && localStorage.user){
+        let parsedLocal = JSON.parse(localStorage.user)
+        initialState.loggedIn = true
+        initialState.userInfo = parsedLocal
+        initialState.accountType = parsedLocal.accountType
 }else{
      initialState.loggedIn = false
 }
