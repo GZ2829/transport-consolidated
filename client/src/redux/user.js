@@ -24,6 +24,7 @@ export const signup = newUser =>{
         return dispatch =>{
             axios.post('/user/signup', newUser).then(response=>{
                 localStorage.token = response.data
+                localStorage.user = newUser
                 dispatch({
                     type: "SIGN_UP",
                     user: newUser
@@ -115,7 +116,7 @@ const userReducer = (state = initialState, action) => {
                 userInfo: {},
                 accountType: '',
                 loggedIn: false,
-                loginfail: false
+                loginfail: false,
             }
             case "LOGIN_FAIL":
             return{
