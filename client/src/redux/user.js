@@ -10,6 +10,15 @@ const initialState = {
     loginfail: false
 }
 
+let parsedLocal = JSON.parse(localStorage.user)
+
+if(localStorage.token){
+     initialState.loggedIn = true
+     initialState.userInfo = parsedLocal
+     initialState.accountType = parsedLocal.accountType
+}else{
+     initialState.loggedIn = false
+}
     
 
 export const signup = newUser =>{
@@ -32,8 +41,7 @@ export function login(credentials) {
         axios.post("/user/login", credentials)
             .then(response => {
                 localStorage.token = response.data.token
-                initialState.user = JSON.stringify(response.data.user);
-                localStorage.password = JSON.stringify(response.data.user.password)
+                 localStorage.user = JSON.stringify(response.data.user);
                 dispatch({
                     type: "LOGIN",
                     user: response.data.user

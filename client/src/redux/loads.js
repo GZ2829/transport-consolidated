@@ -5,7 +5,7 @@ export const getLoadData = () =>{
 
     return dispatch => {
 
-        axios.get('/loads').then(response => {
+        axios.get('/loads', {headers: {Authorization: localStorage.token}}).then(response => {
             
             dispatch({
                 type: 'GET_LOAD_DATA',

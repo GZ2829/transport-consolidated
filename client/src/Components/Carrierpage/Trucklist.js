@@ -23,9 +23,6 @@ class Trucklist extends Component {
         this.handleEdit=this.handleEdit.bind(this)
     }
 
-    componentDidMount(){
-        this.props.getTruckData()
-    }
 
     handleInputChange = event => {
         const {name, value} = event.target;
@@ -46,8 +43,12 @@ class Trucklist extends Component {
     }
 
     handleDelete(){
-        window.confirm('Are you sure you want to delete this truck?')
+        if(window.confirm('Are you sure you want to delete this truck?')){
             this.props.removeTruck(this.props.id)
+
+        }else{
+            return null
+        }
     }
 
     handleEdit(e){

@@ -32,6 +32,7 @@ class Editloads extends Component {
        this.deleteLoad = this.deleteLoad.bind(this)
        this.editALoad=this.editALoad.bind(this)
   }
+
   toggle(){
     this.setState(prevState => {
         return {
@@ -49,8 +50,11 @@ handleInputChange = event => {
     }))
 }
 deleteLoad(){
-    window.confirm('Are you sure you want to delete this load?')
-    this.props.removeLoad(this.props.id)
+    if(window.confirm('Are you sure you want to delete this load?')){
+        this.props.removeLoad(this.props.id)
+    }else{
+        return null
+    }
 }
 editALoad(e){
     e.preventDefault()

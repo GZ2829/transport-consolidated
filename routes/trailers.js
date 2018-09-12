@@ -6,9 +6,11 @@ const mongoose = require('mongoose')
 
 const Trailers = require('../models/trailers')
 
+const checkAuth = require('../middleware/check-auth')
 
 
-trailerRouter.get('/', (req,res)=>{
+
+trailerRouter.get('/', checkAuth, (req,res)=>{
 
     Trailers.find((err, users) =>{
 
@@ -19,7 +21,7 @@ trailerRouter.get('/', (req,res)=>{
     
 })
 
-trailerRouter.post('/', (req,res)=>{
+trailerRouter.post('/', checkAuth, (req,res)=>{
 
     const rucks = Trailers(req.body);
 
@@ -31,7 +33,7 @@ trailerRouter.post('/', (req,res)=>{
     })
 
 })
-trailerRouter.put('/:id', (req,res)=>{
+trailerRouter.put('/:id', checkAuth, (req,res)=>{
 
 Trailers.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updated)=>{
     
@@ -42,7 +44,7 @@ Trailers.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updated)=
 
 })
 
-trailerRouter.delete('/:id', (req, res) =>{
+trailerRouter.delete('/:id', checkAuth, (req, res) =>{
 
     Trailers.findByIdAndRemove(req.params.id, (err,deleted)=>{
 

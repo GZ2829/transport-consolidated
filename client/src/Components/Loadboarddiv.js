@@ -67,8 +67,11 @@ handleInputChange1 = event => {
     }})
 }
 deleteLoad(){
-    window.confirm('Are you sure you want to delete this load?')
-    this.props.removeLoad(this.props.load._id)
+    if(window.confirm('Are you sure you want to delete this load?')){
+        this.props.removeLoad(this.props.load._id)
+    }else{
+        return null
+    }
 }
 
 editALoad(e){

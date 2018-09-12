@@ -21,7 +21,7 @@ userRouter.post('/signup', (req,res) =>{
             })
             user.save((err, newUser) =>{
                 if(err) return res.status(500).send(err)
-                const token= jwt.sign({newUser}, 'superSecret', {expiresIn: '1hr'})
+                const token= jwt.sign({newUser}, 'superSecret', {expiresIn: '1min'})
                 return res.send(200, token)
             })
         }

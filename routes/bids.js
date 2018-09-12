@@ -8,7 +8,9 @@ const Bids = require('../models/bids')
 
 const bcrypt = require('bcrypt')
 
-bidRouter.get('/', (req,res)=>{
+const checkAuth = require('../middleware/check-auth')
+
+bidRouter.get('/', checkAuth,  (req,res)=>{
 
     Bids.find((err, users) =>{
 
@@ -30,7 +32,7 @@ bidRouter.get('/:id', (req,res)=>{
 
 })
 
-bidRouter.post('/', (req,res)=>{
+bidRouter.post('/', checkAuth, (req,res)=>{
 
     const bid = Bids(req.body);
 

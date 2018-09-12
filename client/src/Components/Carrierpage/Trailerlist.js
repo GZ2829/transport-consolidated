@@ -48,8 +48,12 @@ class Trailerlist extends Component {
     }
 
     handleDelete(){
-         window.confirm('Are you sure you want to delete this Trailer?')
+        if(window.confirm('Are you sure you want to delete this Trailer?')){
             this.props.removeTrailer(this.props.id)
+
+        }else{
+            return null
+        }
     }
 
     handleSubmit(e){
